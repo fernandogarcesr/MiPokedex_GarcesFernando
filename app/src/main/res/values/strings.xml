@@ -21,5 +21,6 @@
     <string name="cd_raichu">Imagen de Raichu</string>
     <string name="cd_previous">Ver Pokémon anterior</string>
     <string name="cd_next">Ver Pokémon siguiente</string>
+    <string name="title_activity_pokemon_detail">PokemonDetailActivity</string>
 
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Pokedex" />
-    
+
     //lo que comparten todos los textos de la pokédex
     <style name="Pokedex.Text">
         <item name="android:fontFamily">sans-serif</item>
