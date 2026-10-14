@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="pokedex_yellow">#EDD235</color>
+    <color name="pokedex_red">#D32020</color>
+    <color name="pokedex_text">#3F3F3F</color>
+    <color name="pokedex_dark">#2B2B2B</color>
+    <color name="pokedex_badge">#F4EA3A</color>
+    <color name="pokedex_pokeball_red">#EE1C25</color>
+</resources>

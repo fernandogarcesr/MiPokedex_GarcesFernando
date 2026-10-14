@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="250dp"
+    android:height="250dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <!-- 1) disco oscuro: el contorno -->
+    <path android:fillColor="@color/pokedex_dark"
+        android:pathData="M2,50 a48,48 0 1,0 96,0 a48,48 0 1,0 -96,0 Z" />
+    <!-- 2) mitad de arriba, roja -->
+    <path android:fillColor="@color/pokedex_pokeball_red"
+        android:pathData="M9,50 a41,41 0 0,1 82,0 Z" />
+    <!-- 3) mitad de abajo, blanca (la tapa la tarjeta casi toda) -->
+    <path android:fillColor="@color/white"
+        android:pathData="M9,50 a41,41 0 0,0 82,0 Z" />
+    <!-- 4) franja oscura del centro -->
+    <path android:fillColor="@color/pokedex_dark"
+        android:pathData="M3,45 H97 V55 H3 Z" />
+    <!-- 5) botón central oscuro -->
+    <path android:fillColor="@color/pokedex_dark"
+        android:pathData="M33,50 a17,17 0 1,0 34,0 a17,17 0 1,0 -34,0 Z" />
+    <!-- 6) centro del botón, del color del fondo -->
+    <path android:fillColor="@color/pokedex_yellow"
+        android:pathData="M40,50 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0 Z" />
+</vector>

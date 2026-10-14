@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Pokedex" />
+    
+    //lo que comparten todos los textos de la pokédex
+    <style name="Pokedex.Text">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/pokedex_text</item>
+    </style>
+
+    <style name="Pokedex.Text.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_title</item>
+    </style>
+
+    <style name="Pokedex.Text.Label">
+        <item name="android:textColor">@color/pokedex_red</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_stat</item>
+    </style>
+
+    <style name="Pokedex.Text.Value">
+        <item name="android:textSize">@dimen/text_stat</item>
+    </style>
+
+    <style name="Pokedex.Text.NavLabel">
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>

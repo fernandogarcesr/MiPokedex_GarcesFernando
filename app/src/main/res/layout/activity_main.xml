@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pokedex_yellow"
+    tools:context=".MainActivity">
+
+    <!-- GUIDELINES (invisibles) -->
+    <!-- aquí empieza la tarjeta blanca 30% de la altura -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_card_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <!-- horizontal, aquí queda el piso o donde esta de Pikachu, un poquito abajo del borde de la tarjeta -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_pikachu_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.34" />
+
+    <!-- verticales en dp, margenes izquierdo y derecho -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+    <!-- verticales en %, donde terminan los labels, donde empieza Habilidad y donde empieza la pokebola -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_labels_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.23" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_ability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_pokeball"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.44" />
+
+
+    <!-- pokebola, va primero para que la tarjeta la tape de abajo. Se sale por la derecha y el borde la corta -->
+    <ImageView
+        android:id="@+id/ivPokeball"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="40dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_pokeball"
+        app:layout_constraintStart_toStartOf="@id/gl_pokeball"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- tarjeta blanco, 0dp en ancho y alto = se estira entre sus 4 constraints -->
+    <View
+        android:id="@+id/viewCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_card_top_rounded"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gl_card_top" />
+
+    <!-- pikachu, despues de la tarjeta, así se pinta encima y se pone en su borde -->
+    <ImageView
+        android:id="@+id/ivPikachu"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:contentDescription="@string/cd_pikachu"
+        android:src="@drawable/pikachu"
+        app:layout_constraintBottom_toTopOf="@id/gl_pikachu_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- encabezado, nombre y numero forman una chain vertical "packed" con bias 0 (pegados arriba) -->
+    <TextView
+        android:id="@+id/tvName"
+        style="@style/Pokedex.Text.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/pokemon_name"
+        app:layout_constraintBottom_toTopOf="@id/tvNumber"
+        app:layout_constraintStart_toStartOf="@id/gl_start"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvNumber"
+        style="@style/Pokedex.Text.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pokemon_number"
+        app:layout_constraintBottom_toTopOf="@id/gl_card_top"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+    <ImageView
+        android:id="@+id/ivFavorite"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/cd_favorite"
+        android:src="@drawable/ic_star"
+        app:layout_constraintEnd_toEndOf="@id/gl_end"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- badge del tipo:, centrado con start y end al parent -->
+    <TextView
+        android:id="@+id/tvType"
+        style="@style/Pokedex.Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/bg_type_badge"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="6dp"
+        android:text="@string/pokemon_type"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gl_card_top" />
+
+    <!-- stats, columna izquierdam los labels terminan en gl_labels_end, así quedan alineados a la derecha -->
+    <TextView
+        android:id="@+id/tvHeightLabel"
+        style="@style/Pokedex.Text.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/label_height"
+        app:layout_constraintEnd_toEndOf="@id/gl_labels_end"
+        app:layout_constraintTop_toBottomOf="@id/tvType" />
+
+    <!-- el valor se alinea por baseline con su label -->
+    <TextView
+        android:id="@+id/tvHeightValue"
+        style="@style/Pokedex.Text.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/value_height"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvHeightLabel"
+        app:layout_constraintStart_toEndOf="@id/tvHeightLabel" />
+
+    <TextView
+        android:id="@+id/tvWeightLabel"
+        style="@style/Pokedex.Text.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/label_weight"
+        app:layout_constraintEnd_toEndOf="@id/gl_labels_end"
+        app:layout_constraintTop_toBottomOf="@id/tvHeightLabel" />
+
+    <TextView
+        android:id="@+id/tvWeightValue"
+        style="@style/Pokedex.Text.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/value_weight"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvWeightLabel"
+        app:layout_constraintStart_toEndOf="@id/tvWeightLabel" />
+
+    <!-- stats, columna derecha, arrancan en gl_ability y se alinean por baseline con las filas de la izquierda -->
+    <TextView
+        android:id="@+id/tvAbilityLabel"
+        style="@style/Pokedex.Text.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_ability"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvHeightLabel"
+        app:layout_constraintStart_toStartOf="@id/gl_ability" />
+
+    <TextView
+        android:id="@+id/tvAbilityValue"
+        style="@style/Pokedex.Text.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/value_ability"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvWeightLabel"
+        app:layout_constraintStart_toStartOf="@id/gl_ability" />
+
+
+    <!-- descripcion, 0dp de ancho, entre las dos guidelines de margen -->
+    <TextView
+        android:id="@+id/tvDescription"
+        style="@style/Pokedex.Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/pokemon_description"
+        android:textSize="@dimen/text_description"
+        app:layout_constraintEnd_toEndOf="@id/gl_end"
+        app:layout_constraintStart_toStartOf="@id/gl_start"
+        app:layout_constraintTop_toBottomOf="@id/tvWeightLabel" />
+
+    <!-- imagenes de anterior y siguiente, sobre sus botones -->
+    <ImageView
+        android:id="@+id/ivPrev"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="@string/cd_arbok"
+        android:src="@drawable/arbok"
+        app:layout_constraintBottom_toTopOf="@id/btnPrev"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivNext"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="@string/cd_raichu"
+        android:src="@drawable/raichu"
+        app:layout_constraintBottom_toTopOf="@id/btnNext"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- fila inferior, chain horizontal de 4 elementos
+         btnPrev -> tvPrev -> tvNext -> btnNext
+         los botones miden 40dp ,los dos textos son 0dp con weight 1, o sea se reparten lo que sobra -->
+    <ImageView
+        android:id="@+id/btnPrev"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_nav_button"
+        android:contentDescription="@string/cd_previous"
+        android:padding="8dp"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvPrev"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPrev"
+        style="@style/Pokedex.Text.NavLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:gravity="start"
+        android:text="@string/previous_pokemon"
+        app:layout_constraintBottom_toBottomOf="@id/btnPrev"
+        app:layout_constraintEnd_toStartOf="@id/tvNext"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/btnPrev"
+        app:layout_constraintTop_toTopOf="@id/btnPrev" />
+
+    <TextView
+        android:id="@+id/tvNext"
+        style="@style/Pokedex.Text.NavLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:gravity="end"
+        android:text="@string/next_pokemon"
+        app:layout_constraintBottom_toBottomOf="@id/btnNext"
+        app:layout_constraintEnd_toStartOf="@id/btnNext"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/tvPrev"
+        app:layout_constraintTop_toTopOf="@id/btnNext" />
+
+    <ImageView
+        android:id="@+id/btnNext"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_nav_button"
+        android:contentDescription="@string/cd_next"
+        android:padding="8dp"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvNext" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
